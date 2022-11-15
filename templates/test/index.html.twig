@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestController!{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="text-center my-4 text-danger">Test skill4all</h1>
+     </div>
+    <div class="row">
+        <p>Température actuelle sur Paris: {{ weather }}°</p>
+    </div>
+    <div class="row">
+        <div class="col-6 border border-dark text-center">
+            <h3 class="text-center">Recherche par nom</h3>
+            
+            {{ form(form) }}     
+        </div>    
+        <div class="col-6 border border-dark">
+            <h3 class="text-center">Recherche par catégorie</h3>
+            {% for cat in carCat %}
+                <a href="{{ path('search_cat', {idCat: cat.id}) }}"> {{ cat.name}}</a>
+            {% endfor %}   
+        </div> 
+    </div>
+    <div class="row text-center">
+        <button type="button" class="btn btn-primary m-auto w-25"><a href="{{ path('admin') }}" class="text-white">Administration</a></button>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestController!{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-8">
+        <p>Nombre total de voiture correspondant {{ pagination.getTotalItemCount }}</p>
+
+        {{ knp_pagination_render(pagination) }}
+    </div>
+    <div class="col-4">
+        {% if admin %}
+            <button type="button" class="btn btn-primary m-auto w-25"><a href="{{ path('update_or_create') }}" class="text-white">Ajouter voiture</a></button>
+        {% endif %}
+        <button type="button" class="btn btn-primary m-auto w-25"><a href="{{ path('index') }}" class="text-white">Accueil</a></button>
+    </div>
+</div>
+            
+
+<div class="container-fluid">
+    <div class="row">
+      <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Category</th>
+                <th>Nb seats</th>
+                <th>Nb doors</th>
+                {% if admin %}
+                    <th colspan="2">Admin</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in pagination %}
+            <tr>
+                <td>{{ car.name }}</td>
+                <td>{{ car.cost }}</td>
+                <td>{{ car.Category.name }}</td>
+                <td>{{ car.nbSeats }}</td>
+                <td>{{ car.nbDoors }}</td>
+                {% if admin %}
+                    <td><a href="{{ path('delete', {idCar: car.id}) }}">delete</a></td>
+                    <td><a href="{{ path('update_or_create', {idCar: car.id}) }}">update</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>  
+        
+   
+        
+    </div>
+</div>
+{% endblock %}

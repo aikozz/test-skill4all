@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestController!{% endblock %}
+
+{% block body %}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 text-center">
+            {{ form(form) }}  
+        </div>
+        <div class="col-6">
+            <button type="button" class="btn btn-primary m-auto w-25"><a href="{{ path('index') }}" class="text-white">Accueil</a></button>
+        </div>
+    </div>
+</div>
+{% endblock %}

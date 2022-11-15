@@ -164,7 +164,7 @@ class MainController extends AbstractController
             ->add('Nb_siege', IntegerType::class )
             ->add('Prix', NumberType::class )
             ->add('Category', ChoiceType::class, [ 'choices' => $carCat ] )
-            ->add('Modifier', SubmitType::class)
+            ->add('Ajouter', SubmitType::class)
             ->getForm();
         }
        
